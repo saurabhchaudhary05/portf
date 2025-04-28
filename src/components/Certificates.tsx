@@ -8,35 +8,42 @@ const Certificates = () => {
       issuer: "GEEKSFORGEEKS",
       duration: "6 Months",
       image: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      link: "#"
+      link: "/dsa.pdf"
     },
     {
-      title: "Introduction to Hardware and Operating Systems",
-      issuer: "IBM",
+      title: "Supervised Machine Learning: Regression and Classification",
+      issuer: "Standford",
       duration: "1 Month",
       image: "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      link: "#"
+      link: "/predictive_analysis_mooc.pdf"
     },
     {
       title: "Introduction to Machine Learning Course",
       issuer: "IIT Madras",
       duration: "12 Weeks",
       image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      link: "#"
+      link: "/Nptel_mooc.pdf"
     },
     {
       title: "Data Analysis with R Programming",
       issuer: "Google",
       duration: "18 Weeks",
       image: "https://images.pexels.com/photos/590045/pexels-photo-590045.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      link: "#"
+      link: "/Data analysis with r programming.pdf"
     },
     {
       title: "Data Analysis with Tableau",
       issuer: "Salesforce",
       duration: "12 Weeks",
       image: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      link: "#"
+      link: "/tableau_coursera.pdf"
+    },
+    {
+      title: "Excel Power Tools for Data Analysis",
+      issuer: "Macquarie",
+      duration: "3 Months",
+      image: "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      link: "/Z6CKU5R3FRDQ.pdf"
     }
   ];
 
@@ -45,6 +52,11 @@ const Certificates = () => {
       title: "Electrical Communication Engineering (ECE)",
       description: "Understanding Arduino functionalities, circuit design, and microcontroller programming. Applied knowledge to develop a functional traffic light system.",
       date: "December 2023"
+    },
+    {
+      title: "Introduction to Cloud Computing",
+      description: "Learned basics of cloud infrastructure, services like IaaS, PaaS, SaaS, and practical deployment of applications on cloud platforms like AWS and Azure.",
+      date: "March 2024"
     }
   ];
 

@@ -2,39 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('home');
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-
-      // Update active section based on scroll position
-      const sections = ['home', 'about', 'skills', 'projects', 'education', 'certificates', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const sections = ['home','about','skills','projects','education','certificates','contact'];
+      const pos = window.scrollY + window.innerHeight / 3;
+      for (let id of sections) {
+        const el = document.getElementById(id);
+        if (el && pos >= el.offsetTop && pos < el.offsetTop + el.offsetHeight) {
+          setActive(id);
+          break;
         }
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
+  const links = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
@@ -45,93 +34,148 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#" className="text-xl font-bold text-teal-600">Saurabh.dev</a>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className={`text-slate-700 hover:text-teal-600 transition-colors duration-300 relative group ${
-                activeSection === link.href.substring(1) ? 'text-teal-600' : ''
-              }`}
+    <header
+      className={`
+        fixed inset-x-0 top-0 z-50 transition-all duration-300
+        ${scrolled
+          ? 'backdrop-blur-md bg-gradient-to-r from-white/80 via-white/60 to-white/80 shadow-lg py-2'
+          : 'bg-transparent py-4'}
+      `}
+    >
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <a
+          href="#home"
+          className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-500 hover:from-teal-500 hover:to-cyan-600 transition"
+        >
+          Saurabh.dev
+        </a>
+
+        {/* Desktop Nav */}
+        {/* Desktop Nav */}
+<nav className="hidden lg:flex space-x-8">
+  {links.map(l => (
+    <a
+      key={l.href}
+      href={l.href}
+      className={`
+        relative font-medium transition-colors
+        ${active === l.href.slice(1)
+          ? 'bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-500 font-bold'
+          : 'text-gray-900 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-teal-400 hover:to-cyan-500'}
+      `}
+    >
+      {l.name}
+      <span
+        className={`
+          absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-500
+          transition-transform duration-300 origin-left
+          ${active === l.href.slice(1) ? 'scale-x-100' : 'scale-x-0'}
+        `}
+      />
+    </a>
+  ))}
+</nav>
+
+{/* Mobile Nav */}
+{open && (
+  <div className="lg:hidden bg-white/95 backdrop-blur-md shadow-md">
+    <div className="flex flex-col items-center space-y-4 py-6">
+      {links.map(l => (
+        <a
+          key={l.href}
+          href={l.href}
+          onClick={() => setOpen(false)}
+          className={`
+            font-medium text-lg transition-colors
+            ${active === l.href.slice(1)
+              ? 'bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-500 font-bold'
+              : 'text-gray-900 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-teal-400 hover:to-cyan-500'}
+          `}
+        >
+          {l.name}
+        </a>
+      ))}
+      {/* …social icons… */}
+    </div>
+  </div>
+)}
+
+
+
+        {/* Social + Mobile Toggle */}
+        <div className="flex items-center space-x-4">
+          <div className="hidden lg:flex space-x-4">
+            <a
+              href="https://github.com/saurabhchaudhary05"
+              target="_blank"
+              rel="noopener"
+              className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition"
             >
-              {link.name}
-              <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-teal-600 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${
-                activeSection === link.href.substring(1) ? 'scale-x-100' : ''
-              }`}></span>
+              <Github size={20} className="text-white" />
+            </a>
+            <a
+              href="https://linkedin.com/in/saur12"
+              target="_blank"
+              rel="noopener"
+              className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition"
+            >
+              <Linkedin size={20} className="text-white" />
+            </a>
+          </div>
+          <button
+            onClick={() => setOpen(!open)}
+            className="lg:hidden p-2 text-white hover:text-cyan-400 transition"
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`
+          lg:hidden absolute inset-x-0 top-full bg-white/95 backdrop-blur-md shadow-md
+          transform origin-top transition-all duration-300
+          ${open ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'}
+        `}
+      >
+        <div className="flex flex-col items-center space-y-4 py-6">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className={`
+                font-medium text-lg transition-colors
+                ${active === l.href.slice(1)
+                  ? 'bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-500 font-bold'
+                  : 'text-gray-900 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-teal-400 hover:to-cyan-500'}
+              `}
+            >
+              {l.name}
             </a>
           ))}
-        </nav>
-        
-        <div className="hidden md:flex items-center space-x-4">
-          <a 
-            href="https://github.com/saurabhchaudhary05" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-slate-700 hover:text-teal-600 transition-colors duration-300"
-          >
-            <Github size={20} />
-          </a>
-          <a 
-            href="https://www.linkedin.com/in/saur12/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-slate-700 hover:text-teal-600 transition-colors duration-300"
-          >
-            <Linkedin size={20} />
-          </a>
-        </div>
-        
-        {/* Mobile Navigation Button */}
-        <button 
-          className="md:hidden text-slate-700"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-      
-      {/* Mobile Navigation Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                className={`text-slate-700 hover:text-teal-600 transition-colors duration-300 py-2 ${
-                  activeSection === link.href.substring(1) ? 'text-teal-600' : ''
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-            <div className="flex space-x-4 py-2">
-              <a 
-                href="https://github.com/saurabhchaudhary05" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-slate-700 hover:text-teal-600 transition-colors duration-300"
-              >
-                <Github size={20} />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/saur12/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-slate-700 hover:text-teal-600 transition-colors duration-300"
-              >
-                <Linkedin size={20} />
-              </a>
-            </div>
+          <div className="flex space-x-6 pt-4">
+            <a
+              href="https://github.com/saurabhchaudhary05"
+              target="_blank"
+              rel="noopener"
+              className="p-2 rounded-full bg-slate-200 hover:bg-slate-300 transition"
+            >
+              <Github size={24} className="text-slate-800" />
+            </a>
+            <a
+              href="https://linkedin.com/in/saur12"
+              target="_blank"
+              rel="noopener"
+              className="p-2 rounded-full bg-slate-200 hover:bg-slate-300 transition"
+            >
+              <Linkedin size={24} className="text-slate-800" />
+            </a>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 };

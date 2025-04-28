@@ -20,8 +20,8 @@ const Projects = () => {
       image: "https://images.pexels.com/photos/2988232/pexels-photo-2988232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       technologies: ["Java", "JDBC", "MySQL", "OOP", "Multithreading", "Exception Handling"],
       links: [
-        { type: "github", url: "https://github.com/saurabhchaudhary05" },
-        { type: "external", url: "#" }
+        { type: "github", url: "https://github.com/saurabhchaudhary05/ATM-simulator" },
+        
       ]
     },
     {
@@ -31,8 +31,8 @@ const Projects = () => {
       image: "https://images.pexels.com/photos/4665064/pexels-photo-4665064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       technologies: ["R", "dplyr", "tidyr", "ggplot2", "MySQL", "RStudio", "Tableau Desktop"],
       links: [
-        { type: "github", url: "https://github.com/saurabhchaudhary05" },
-        { type: "external", url: "#" }
+        { type: "github", url: "https://github.com/saurabhchaudhary05/Tableau-Project" },
+        
       ]
     }
   ];
