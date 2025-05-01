@@ -32,7 +32,7 @@ const Certificates = () => {
       link: "/Data analysis with r programming.pdf"
     },
     {
-      title: "Data Analysis with Tableau",
+      title: "Data Visualization with Tableau",
       issuer: "Salesforce",
       duration: "12 Weeks",
       image: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
