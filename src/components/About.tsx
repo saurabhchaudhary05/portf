@@ -76,7 +76,7 @@ const About = () => {
                 <p className="text-slate-600 text-sm">Projects Completed</p>
               </div>
               <div>
-                <h4 className="text-2xl font-bold text-teal-600">600+</h4>
+                <h4 className="text-2xl font-bold text-teal-600">700+</h4>
                 <p className="text-slate-600 text-sm">Coding Problems</p>
               </div>
             </div>
