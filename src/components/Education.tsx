@@ -17,10 +17,17 @@ const Education = () => {
       period: "April 2019 - March 2020",
       grade: "Percentage: 87%",
     },
+    {
+      degree: "Matriculation",
+      institution: "GIS",
+      location: "Bharatpur, Rajasthan",
+      period: "April 2017 - March 2018",
+      grade: "Percentage: 90.5%",
+    },
   ];
 
   const achievements = [
-    "Solved 400+ algorithmic problems on various platforms",
+    "Solved 700+ algorithmic problems on various platforms",
     "Active problem-solving on LeetCode and GeeksForGeeks",
     "Among top 1% Dean's students at university",
     "Recognized for academic excellence and extracurricular participation",
@@ -30,6 +37,7 @@ const Education = () => {
     "Active Member of Apna Ghar NGO",
     "State Level Sports Participant",
     "Hostel Amenities Committee Coordinator",
+    "Secured All India Rank 1017 in UPSEE (Uttar Pradesh State Entrance Exam)",
   ];
 
   return (
