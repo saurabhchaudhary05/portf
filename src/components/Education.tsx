@@ -31,13 +31,14 @@ const Education = () => {
     "Active problem-solving on LeetCode and GeeksForGeeks",
     "Among top 1% Dean's students at university",
     "Recognized for academic excellence and extracurricular participation",
+    "Secured All India Rank 1017 in UPSEE (Uttar Pradesh State Entrance Exam)",
   ];
 
   const extracurricular = [
     "Active Member of Apna Ghar NGO",
     "State Level Sports Participant",
     "Hostel Amenities Committee Coordinator",
-    "Secured All India Rank 1017 in UPSEE (Uttar Pradesh State Entrance Exam)",
+    
   ];
 
   return (
