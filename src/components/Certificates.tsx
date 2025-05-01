@@ -51,12 +51,12 @@ const Certificates = () => {
     {
       title: "Electrical Communication Engineering (ECE)",
       description: "Understanding Arduino functionalities, circuit design, and microcontroller programming. Applied knowledge to develop a functional traffic light system.",
-      date: "December 2023"
+      date: "December 2024"
     },
     {
-      title: "Introduction to Cloud Computing",
-      description: "Learned basics of cloud infrastructure, services like IaaS, PaaS, SaaS, and practical deployment of applications on cloud platforms like AWS and Azure.",
-      date: "March 2024"
+      title: "Data Science with Python: From Data Cleaning to Model Deployment",
+      description: "This workshop covers key skills like data preprocessing (using Pandas), visualization (Matplotlib/Seaborn), machine learning (Scikit-learn), and deploying models using Flask or Streamlit.",
+      date: "January 2025"
     }
   ];
 
